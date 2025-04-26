@@ -6,39 +6,39 @@ pipeline {
     }
 
     stages {
-        stage('📦 Clone Repository') {
+        stage(' Clone Repository') {
             steps {
-                git 'https://github.com/harshitduttshukla/dockerProject2.git'
+                 git branch: 'main', url: 'https://github.com/harshitduttshukla/dockerProject2.git'
             }
         }
 
-        stage('🐳 Build Docker Images') {
+        stage(' Build Docker Images') {
             steps {
                 script {
-                    sh 'docker-compose build'
+                    bat 'docker-compose build'
                 }
             }
         }
 
-        stage('🚀 Run Services') {
+        stage(' Run Services') {
             steps {
                 script {
-                    sh 'docker-compose up -d'
+                    bat 'docker-compose up -d '
                 }
             }
         }
 
-        stage('🧪 Test App') {
+        stage('Test App') {
             steps {
                 echo 'Optional: Add test scripts here'
                 // For example: sh 'docker exec backend npm test'
             }
         }
 
-        stage('🧹 Tear Down') {
+        stage(' Tear Down') {
             steps {
                 script {
-                    sh 'docker-compose down'
+                    bat 'docker-compose down'
                 }
             }
         }
